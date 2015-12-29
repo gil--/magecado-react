@@ -1,0 +1,37 @@
+/*
+  Breakpoints
+*/
+//$bp-xsmall: 479px;
+$bp-small: 599px;
+$bp-medium: 770px;
+$bp-large: 979px;
+//$bp-xlarge: 1199px;
+$bp-xlarge: 1280px;
+
+
+/*
+  Colors
+*/
+$c-white: #fff;
+$c-black: #000;
+
+$c-dark: #34495e;
+
+$c-magento-orange: #EF682F;
+$c-avocado-green: #42b983;
+$c-jelly-bean: #27669A;
+
+$c-primary: $c-magento-orange;
+$c-secondary: $c-avocado-green;
+$c-secondary--alt: $c-jelly-bean;
+
+$c-border: #e6e6e6;
+$c-background: #F9F9F9;
+
+/*
+  Typography
+*/
+$f-primary: 'Source Sans Pro', sans-serif;
+//$f-secondary: ;
+$f-normal: 400;
+$f-bold: 700;

@@ -1,0 +1,14 @@
+body {
+  font-family: $f-primary;
+  -webkit-font-smoothing: antialiased;
+  background-color: $c-background;
+}
+
+p {
+  word-spacing: 0.05em;
+}
+
+h1, h2, h3, h4, h5 {
+  color: $c-dark;
+  margin: 0;
+}

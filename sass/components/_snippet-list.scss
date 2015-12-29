@@ -1,0 +1,136 @@
+.snippets {
+  margin-bottom: 40px;
+}
+
+.snippet {
+  &__list {
+    margin-bottom: 35px;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  &__list-item {
+    margin-bottom: 25px;
+
+    &:hover .snippet__meta {
+      opacity: 1 !important; //override default lower opacity.
+    }
+  }
+
+  &__title {
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 18px;
+
+    @include bp($bp-medium) {
+      font-size: 22px;
+    }
+
+    a {
+      position: relative;
+      padding-top: 1px;
+      padding-right: 4px;
+      padding-bottom: 1px;
+      padding-left: 4px;
+      text-decoration: none;
+      line-height: 1.5;
+      color: #292929;
+      background-image: linear-gradient($c-secondary 0%, $c-secondary 100%);
+      background-repeat: repeat-y;
+      background-size: 0% 0em;
+      background-position: 0 100%;
+      transition: 250ms ease;
+      border-bottom: 1px solid #B7B7B7;
+
+      @include hover {
+        text-decoration: none;
+        color: whitesmoke;
+        background-image: linear-gradient($c-secondary 0%, $c-secondary 100%);
+        background-size: 100% 1em;
+        border-bottom: 0;
+        cursor: crosshair;
+      }
+    }
+  }
+
+  &__desc {
+    margin: 0;
+    color: $c-gray;
+  }
+
+  &__meta {
+    margin-top: 10px;
+    font-size: 12px;
+    color: $c-secondary;
+    opacity: .7;
+
+    @include bp($bp-medium) {
+      font-size: 14px;
+      background: $c-white;
+      padding: 0;
+    }
+
+    svg {
+      vertical-align: initial;
+      height: 12px;
+      width: 12px;
+      margin-right: 5px;
+    }
+
+    > div {
+      display: inline;
+
+      @include bp($bp-medium) {
+        display: block;
+        border-top: 3px solid $c-background;
+        margin-right: 0;
+        padding: 10px;
+
+        &:first-child {
+          border-top: 0;
+        }
+      }
+    }
+  }
+
+  &__mage-version {
+    margin-right: 20px;
+  }
+
+  &__views {
+    margin-left: 15px;
+
+    @include bp($bp-medium) {
+      margin-left: 0;
+    }
+  }
+
+  &__tags {
+    display: inline-block;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin-right: 5px;
+
+      &:after {
+        content: ",";
+      }
+
+      &:last-child:after {
+        content: none;
+      }
+    }
+  }
+
+  &__load-more {
+    text-decoration: none;
+
+    svg {
+      height: 12px;
+      width: 12px;
+    }
+  }
+}

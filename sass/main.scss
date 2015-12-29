@@ -1,0 +1,49 @@
+// 3rd Party Vendors
+@import "vendor/normalize";
+
+@font-face {
+  font-family: 'maison-mono';
+  src: url('../src/fonts/maison-mono.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+}
+
+// Core
+@import "var";
+@import "mixins/mixins";
+
+// Componenets
+@import "components/header";
+@import "components/footer";
+@import "components/snippet-list";
+@import "components/snippet";
+@import "components/svg";
+
+body {
+  font-family: 'maison-mono';
+}
+
+a {
+  color: $c-primary;
+
+  @include hover {
+    color: darken($c-primary, 20%);
+  }
+}
+
+.wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include bp($bp-small) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+.button--disabled {
+  outline: 0;
+  border: 0;
+  opacity: .5;
+  cursor: not-allowed;
+}
