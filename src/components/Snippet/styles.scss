@@ -1,0 +1,136 @@
+:local(.snippet) {
+  @include clearfix;
+  margin-top: -40px;
+  padding-top: 20px;
+  background-color: $c-background;
+
+  @include bp($bp-medium) {
+    position: relative;
+    min-height: calc(100vh - 184px);
+  }
+}
+
+:local(.like) {
+  display: none; //ability to like snippets not yet developed
+  background: none;
+  border: 0;
+  outline: 0;
+
+  svg {
+    height: 25px;
+    width: 25px;
+
+    @include bp($bp-medium) {
+      height: 32px;
+      width: 32px;
+    }
+  }
+
+  .outline * {
+    fill: none;
+    stroke: $c-pink;
+
+    @include hover {
+      fill: rgba($c-pink, .5);
+    }
+  }
+
+  .glyph {
+    display: none;
+
+    * {
+      fill: $c-pink;
+    }
+  }
+}
+
+:local(.header) {
+  position: relative;
+  padding: 0 20px 40px;
+
+  @include bp($bp-small) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @include bp($bp-medium) {
+    position: initial;
+    float: right;
+    width: 310px;
+    padding: 20px;
+    border: 0;
+  }
+
+  h1 {
+    margin-top: 5px;
+    font-size: 22px;
+
+    @include bp($bp-medium) {
+      margin-top: 10px;
+    }
+  }
+}
+
+:local(.meta) {
+  opacity: 1;
+
+  svg {
+    @include svg;
+  }
+}
+
+:local(.author) {
+  color: $c-gray;
+  font-size: 11px;
+  position: absolute;
+  bottom: 15px;
+
+  :local(.name) {
+    color: $c-primary;
+  }
+}
+
+:local(.content) {
+  min-height: 250px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  background-color: $c-white;
+  /*color: $c-white;*/
+  /*background-color: $c-black;*/
+  border-top: 1px solid #EBEBEB;
+
+  @include bp($bp-medium) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 350px);
+    height: 100%;
+    padding: 0;
+    border-top: 0;
+    border-right: 1px solid #EBEBEB;
+
+    .wrapper {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+
+  :local(.snippet-code) {
+    min-height: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 20px 20px;
+    color: $c-white;
+    background-color: lighten($c-black, 12%);
+    overflow-x: auto;
+
+    @include bp($bp-small) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
