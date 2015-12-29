@@ -7,7 +7,8 @@
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "build:gh": "npm run build && node ./build-gh-pages.js && rm -r ./dist"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
   },
   "homepage": "https://github.com/gaearon/react-transform-boilerplate",
   "devDependencies": {
+    "autoprefixer": "^6.1.0",
     "babel-core": "^5.4.7",
     "babel-eslint": "^3.1.9",
     "babel-loader": "^5.1.2",
@@ -41,20 +43,29 @@
     "eslint": "^1.3.1",
     "eslint-plugin-react": "^2.3.0",
     "express": "^4.13.3",
+    "extract-text-webpack-plugin": "^0.9.1",
     "history": "^1.13.0",
+    "node-sass": "^3.4.2",
     "react-router": "^1.0.0",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.0",
     "redbox-react": "^1.0.1",
     "rimraf": "^2.4.3",
+    "sass-loader": "^3.1.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.9.6",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.0.0"
   },
   "dependencies": {
+    "file-loader": "^0.8.5",
+    "gh-pages": "^0.8.0",
     "re-base": "^1.2.2",
     "react": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "remarkable": "^1.6.1",
+    "svg-inline-loader": "^0.4.0",
+    "svg-inline-react": "^0.3.1",
+    "url-loader": "^0.5.7"
   }
 }
