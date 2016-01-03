@@ -18,6 +18,8 @@
 @import "components/snippet-list";
 @import "components/snippet";
 @import "components/svg";
+@import "components/modal";
+@import "components/404";
 
 body {
   font-family: 'maison-mono';
@@ -46,4 +48,79 @@ a {
   border: 0;
   opacity: .5;
   cursor: not-allowed;
+}
+
+.button--transparent {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+}
+
+form {
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: $c-dark;
+
+    .label__info {
+      color: $c-magento-orange;
+      font-size: 12px;
+    }
+  }
+
+  input,
+  textarea {
+    width: calc(100% - 23px);
+    padding: 10px;
+    line-height: normal;
+    border: 1px solid #DADADA;
+  }
+
+  select {
+    width: 100%;
+    // position: relative;
+    // -webkit-appearance: none;
+    // border-radius: 0;
+    // padding: 10px;
+    // background: white;
+    // border-color: #DADADA;
+    // width: 100%;
+    // need arrow thing...
+  }
+
+}
+
+button {
+  padding: 10px 25px;
+  background: $c-primary;
+  color: $c-white;
+  border: 0;
+  box-shadow: 0 0 10px 2px #E6E6E6;
+
+  @include hover {
+    color: $c-primary;
+    background-color: $c-white;
+  }
+}
+
+.auth--login {
+  padding: 10px 0 50px;
+  text-align: center;
+}
+
+button.github {
+  padding: 10px 20px;
+  color: $c-white;
+  background-color: $c-green-github;
+  border: 0;
+
+  @include hover {
+    background-color: darken($c-green-github, 15%);
+  }
 }
