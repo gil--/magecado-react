@@ -7,7 +7,12 @@ import { render } from 'react-dom';
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 var NotFound = React.createClass({
   render : function() {
-    return <div>Opps. Page not found.</div>
+    return (
+      <div className="page-404">
+        <h2>Opps!!!!!</h2>
+        <p>Page not found.</p>
+        <p>😱😁</p>
+      </div>);
   }
 });
 
