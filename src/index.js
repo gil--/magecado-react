@@ -9,57 +9,13 @@ import Rebase from 're-base';
 var base = Rebase.createClass('https://magecado.firebaseio.com');
 
 // Components
+import App from './components/app';
 import Header from './components/Header/index';
 import Footer from './components/Footer';
 import NotFound from './components/404';
 import SnippetList from './components/SnippetList/index';
 import Snippet from './components/Snippet/index';
-
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  App Root
-  @use <App/>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-var App = React.createClass({
-  getInitialState : function() {
-    return {
-      snippets : {}
-    }
-  },
-  componentDidMount : function() {
-    base.syncState('/snippet', {
-      context : this,
-      state : 'snippets'
-    });
-  },
-  addSnippet : function(snippet) {
-    var timestamp = (new Date()).getTime();
-    this.state.snippets[timestamp] = snippet;
-    this.setState({ snippets : this.state.snippets });
-  },
-  render : function() {
-    return (
-        <div id="homepage">
-          <Header addSnippet={this.addSnippet}/>
-            { React.cloneElement(this.props.children, { snippets: this.state.snippets }) }
-          <Footer/>
-        </div>
-    )
-  }
-});
-
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  Homepage aka Snippets Index
-  @use <Snippets/>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-// var Snippets = React.createClass({
-//   render : function() {
-//     return (
-//         <div id="snippets">
-//             <Results snippets={this.props.snippets}/>
-//         </div>
-//     )
-//   }
-// });
+import AddSnippet from './components/AddSnippet';
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   Page - Snippet
@@ -69,26 +25,46 @@ var App = React.createClass({
 var Page_Snippet = React.createClass({
   getInitialState : function() {
     return {
-      snippetInfo : {}
+      snippetInfo : {},
+      didUpdateViews: false
     }
   },
-  componentDidMount : function() {
-    base.syncState('/snippet/' + this.props.params.snippetId, {
-      context : this,
-      state : 'snippetInfo'
-    });
+  componentWillMount : function() {
+    var snippetViews;
 
-    //var snippetViews = this.state.snippets.views + 1;
-    //this.setState({ snippets : snippetViews });
+    this.ref = base.syncState('/snippet/' + this.props.params.snippetId, {
+      context : this,
+      state: 'snippetInfo',
+      then() {
+        snippetViews = this.state.snippetInfo.views;
+        if(!this.state.didUpdateViews) {
+          this.updateViews(snippetViews);
+        }
+     }
+    });
+  },
+  updateViews : function(snippetViews) {
+    this.state.didUpdateViews = true;
+
+    if(typeof snippetViews !== 'undefined') {
+      base.post('/snippet/' + this.props.params.snippetId + '/views', {
+        data: snippetViews + 1
+      });
+    }
+  },
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
   },
   render : function() {
     var snippet;
     var snippetPager = {previous: null, next: null, random: null};
 
-    if (this.state.snippetInfo.title !== null) {
+    if (Object.keys(this.state.snippetInfo).length > 0) {
       snippet = <Snippet info={this.state.snippetInfo} pagination={snippetPager} />;
     } else {
-      snippet = 'No snippet found';
+      return (
+        <div className="page-404">No snippet found...</div>
+      )
     }
 
     return (
@@ -103,8 +79,7 @@ var Page_Snippet = React.createClass({
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 var Results = React.createClass({
   renderSnippets : function(key) {
-    var snippetPager = {previous: null, next: null, random: null};
-    return <SnippetList key={key} snippetId={key} snippetInfo={this.props.snippets[key]} pagination={snippetPager} />
+    return <SnippetList key={key} snippetId={key} snippetInfo={this.props.snippets[key]} />
   },
   render : function() {
     return (
@@ -127,8 +102,9 @@ var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={Results}/>
       <Route path="/snippet/:snippetId" component={Page_Snippet}/>
+      <Route path="/submit" component={AddSnippet}/>
+      <Route path="*" component={NotFound}/>
     </Route>
-    <Route path="*" component={NotFound}/>
   </Router>
 )
 
