@@ -1,0 +1,112 @@
+.modal {
+  background-color: $c-white;
+
+  &__header {
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 1px solid #EBEBEB;
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    svg {
+      width: 15px;
+      height: 15px;
+
+      * {
+        fill: $c-dark;
+      }
+    }
+
+    @include hover {
+      svg * {
+        fill: $c-primary;
+      }
+    }
+  }
+
+  form {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px 0;
+
+    ul {
+      margin-top: 0;
+
+      li {
+        margin-bottom: 25px;
+        background-color: $c-white;
+      }
+    }
+
+    textarea.superTall {
+      min-height: 300px;
+
+      @include bp($bp-medium) {
+        min-height: 600px;
+      }
+    }
+  }
+}
+
+// React-tagsinput Component Styling
+.react-tagsinput {
+  padding-left: 5px;
+  padding-top: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.react-tagsinput-tag {
+  display: inline-block;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: $c-white;
+  background-color: $c-avocado-green;
+  border: 1px solid #3C966D;
+  // alternative orange/white styling. bad? -- little contrast
+  // color: $c-primary;
+  // background-color: whitesmoke;
+  // border: 1px solid $c-dark;
+
+  a {
+    color: $c-dark;
+
+    @include hover {
+      color: $c-black;
+    }
+  }
+}
+
+.react-tagsinput-remove {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.react-tagsinput-tag a::before {
+  content: "\0020\2715";
+  padding-left: 3px;
+  font-size: 12px;
+}
+
+.react-tagsinput-input {
+  width: 80px;
+  margin-bottom: 6px;
+  margin-top: 1px;
+  padding: 5px;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #777;
+  background: transparent;
+  border: 0;
+  outline: none;
+}

@@ -6,6 +6,7 @@
   @include bp($bp-medium) {
     position: relative;
     min-height: calc(100vh - 184px);
+    background-color: $c-white;
   }
 
   &__like {
@@ -44,7 +45,7 @@
 
   &__header {
     position: relative;
-    padding: 0 20px 80px;
+    padding: 10px 20px 80px;
 
     @include bp($bp-small) {
       padding-left: 40px;
@@ -115,11 +116,11 @@
     overflow-x: auto;
 
     @include bp($bp-medium) {
-      width: calc(100% - 351px);
+      width: calc(100% - 352px);
       min-height: calc(100vh - 164px);
       padding: 0;
       border-top: 0;
-      border-right: 1px solid #EBEBEB;
+      border-right: 2px solid #EBEBEB;
 
       .wrapper {
         padding-top: 20px;
@@ -135,8 +136,6 @@
       display: block;
       margin-top: 10px;
       margin-bottom: 20px;
-      margin-left: -20px;
-      margin-right: -20px;
       padding: 20px 20px;
       color: $c-white;
       background-color: lighten($c-black, 12%);
@@ -158,9 +157,11 @@
     background: #ededed;
 
     @include bp($bp-medium) {
-      position: fixed;
+      position: absolute;
+      bottom: 0;
       width: 350px;
-      border-left: 1px solid #EBEBEB;
+      border-top: 2px solid #EBEBEB;
+      border-left: 2px solid #EBEBEB;
     }
   }
 }

@@ -5,17 +5,18 @@
   padding-bottom: 30px;
   border-bottom: 2px solid #eee;
 
-  &__logo {
-    margin-bottom: 20px;
-    font-size: 18px;
-    text-align: center;
-    color: $c-secondary;
+  .wrapper {
+    @include clearfix;
+  }
 
-    @include bp($bp-small) {
-      float: left;
-      text-align: left;
-      margin-bottom: 0;
-    }
+  &__logo {
+    // float: left;
+    display: inline-block;
+    vertical-align: sub;
+    margin-bottom: 0;
+    font-size: 18px;
+    text-align: left;
+    color: $c-secondary;
 
     svg {
       height: 25px;
@@ -25,26 +26,26 @@
     }
 
     a {
+      vertical-align: sub;
       text-decoration: none;
 
-      span {
+      .header__logo__cado {
         color: $c-secondary;
+      }
+
+      .header__logo__mage {
+        color: $c-primary;
       }
     }
   }
 
   &__nav {
-    text-align: center;
-
-    @include bp($bp-small) {
-      float: right;
-      text-align: right;
-    }
+    float: right;
+    text-align: right;
   }
 
   &__nav-list {
     margin: 0;
-    padding-top: 2px;
     padding-left: 0;
     list-style: none;
 
@@ -57,22 +58,37 @@
       @include hover {
         border-bottom-width: 2px;
       }
-
-      &.link--register {
-        color: #969696;
-
-        @include hover {
-          color: darken(#969696, 15%);
-        }
-      }
     }
 
     li {
       display: inline-block;
-      margin-right: 10px;
 
-      &:last-child {
-        margin-right: 0;
+      &.link--login {
+        display: none; //currently hidden
+
+        a {
+          color: $c-green-github;
+
+          @include hover {
+            color: darken($c-green-github, 15%);
+          }
+        }
+      }
+
+      &.link--submit {
+        display: block;
+        padding: 9px 9px 8px;
+
+        a {
+          padding: 9px 9px 8px;
+          color: #6C6C6C;
+          background-color: #EEEEEE;
+          border: 0;
+
+          @include hover {
+            background-color: darken(#EEEEEE, 10%);
+          }
+        }
       }
     }
   }
