@@ -14,6 +14,15 @@ import AddSnippet from '../AddSnippet';
 var SnippetList = React.createClass({
   render :  function() {
     var snippetInfo = this.props.snippetInfo;
+
+    var snippetTags = null;
+
+    if(snippetInfo.tags) {
+      snippetTags = snippetInfo.tags.map(function(tag, tagIndex) {
+        return <li key={tagIndex}>{tag}</li>;
+      });
+    }
+
     return (
       <li className="snippet__list-item">
         <h2 className="snippet__title"><Link to={`/snippet/${this.props.snippetId}`}>{snippetInfo.title}</Link></h2>
@@ -31,8 +40,7 @@ var SnippetList = React.createClass({
             src={require('!svg-inline!./images/tag.svg')}
           />
           <ul className="snippet__tags">
-            <li>Local.xml</li>
-            <li>Skin</li>
+            {snippetTags}
           </ul>
         </div>
       </li>
