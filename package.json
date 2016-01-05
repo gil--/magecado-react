@@ -4,7 +4,7 @@
   "description": "A new Webpack boilerplate with hot reloading React components, and error handling on module and component level.",
   "scripts": {
     "clean": "rimraf dist",
-    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build:webpack": "NODE_ENV=production webpack --config webpack/config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "start": "node devServer.js",
     "lint": "eslint src",
@@ -62,6 +62,7 @@
     "firebase": "^2.3.2",
     "gh-pages": "^0.8.0",
     "highlight.js": "^9.0.0",
+    "lodash.merge": "^3.3.2",
     "moment": "^2.10.6",
     "re-base": "^1.4.0",
     "react": "^0.14.0",
